@@ -2,20 +2,21 @@ package employeeApp;
 
 import java.util.Arrays;
 
+//POJO -> Plain Old Java Object
 public class Employee {
 
     private long id;
     private String fullName;
     private String email;
     private String password;
-    private String[] healthplans;
+    private String[] healthPlans;
 
     public Employee(long id, String fullName, String email, String password, String[] healthplans) {
         this.id = id;
         this.fullName = fullName;
         this.email = email;
         this.password = password;
-        this.healthplans = healthplans;
+        this.healthPlans = healthplans;
     }
 
     public long getId() {
@@ -51,11 +52,11 @@ public class Employee {
     }
 
     public String[] getHealthPlans() {
-        return healthplans;
+        return healthPlans;
     }
 
-    public void setHealthPlans(String[] healthplans) {
-        this.healthplans = healthplans;
+    public void setHealthPlans(String[] healthPlans) {
+        this.healthPlans = healthPlans;
     }
 
     @Override
@@ -65,20 +66,20 @@ public class Employee {
                 ", fullName='" + fullName + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", healthplans=" + Arrays.toString(healthplans) +
+                ", healthPlans=" + Arrays.toString(healthPlans) +
                 '}';
     }
 
-    public void addHealthplan(int index, String name){
+    public void addHealthPlan(int index, String name){
 
-        if(index < 0 || index > healthplans.length){
+        if(index < 0 || index > healthPlans.length){
             System.out.println("Error: Invalid index");
         }
 
-        if(healthplans[index] != null){
+        if(healthPlans[index] != null){
             System.out.println("This index is not empty can't add health plan name");
         }else{
-            healthplans[index] = name;
+            healthPlans[index] = name;
             System.out.println("Health plan name" + name + "added successfully");
         }
     }
