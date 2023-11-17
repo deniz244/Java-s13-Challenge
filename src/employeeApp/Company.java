@@ -77,6 +77,7 @@ public class Company {
             }
             }catch (ArrayIndexOutOfBoundsException ex){
                 System.out.println("Invalid index: " + ex.getMessage());
-            }
+            }catch (Exception ex){
+            System.out.println(ex.getMessage());}
         }
 }
