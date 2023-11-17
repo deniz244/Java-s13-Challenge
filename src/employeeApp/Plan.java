@@ -1,7 +1,11 @@
 package employeeApp;
 
 public enum Plan {
-    PLAN("A",20);
+
+    //STATIC VARIABLE ZANNEDİLMEMESİ İÇİN BÜYÜK HARFLE YAZILIYOR
+    BASIC("BASIC",3000),
+    MEDIUM("MEDIUM",6000),
+    ADVANCE("ADVANCE",10000);
 
     private String name;
     private double price;

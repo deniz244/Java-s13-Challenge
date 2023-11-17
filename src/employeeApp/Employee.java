@@ -70,17 +70,40 @@ public class Employee {
                 '}';
     }
 
+    //healthPlans  ["A Sigorta" null,null,null]
+    //flag(boolean)
     public void addHealthPlan(int index, String name){
 
-        if(index < 0 || index > healthPlans.length){
-            System.out.println("Error: Invalid index");
-        }
+        //GUARDING ÖNCELİKLİ -> ÖNCE BÜTÜN OLUMSUZ KOŞULLARI DÜŞÜN
+        //index < 0 || index >= healthPlans.length de yazılablirdi if içinde
+        if(index < 0 ){
+            System.out.println("Error: Invalid index, index < 0");
+        }else {
+            try {
+                boolean isExist = false;
+                for (String healthPlan : healthPlans) {
+                    if (healthPlan != null && healthPlan.equals(name)) {
+                        isExist = true;
+                        System.out.println(name + "is already in the health plans array ");
+                        break;
+                    }
+                }
 
-        if(healthPlans[index] != null){
-            System.out.println("This index is not empty can't add health plan name");
-        }else{
-            healthPlans[index] = name;
-            System.out.println("Health plan name" + name + "added successfully");
+                if (!isExist) {
+                    if (healthPlans[index] != null) {
+                        System.out.println("This index is not empty can't add health plan name");
+                    } else {
+                        healthPlans[index] = name;
+                        System.out.println("Health plan " + name + " added successfully");
+                    }
+                }
+            }catch (ArrayIndexOutOfBoundsException ex){
+                System.out.println("Invalid index: " + index);
+            }catch (NullPointerException npe){
+                System.out.println("Null pointer exception" + npe.getMessage());
+            }catch (Exception ex){
+                System.out.println(ex.getMessage());
+            }
         }
     }
 }

@@ -6,6 +6,7 @@ public class Healthplan {
 
     private Plan plan;
 
+    //objenin nasıl yaratılacağını belirir --> constructor
     public Healthplan(long id, String name, Plan plan){
         this.id = id;
         this.name = name;

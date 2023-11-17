@@ -8,10 +8,20 @@ public class Company {
     private double giro;
     private String[] developerNames;
 
-    public void checkGiro(double giro){
+    //DIŞARIDAN HİÇBİR ŞEKİLDE ULAŞILMASINA İHTİYAÇ OLMADIĞI İÇİN PRIVATE
+    private void checkGiro(double giro){
         if (giro < 0){
             this.giro = 0;
+        }else {
+            this.giro = giro;
         }
+    }
+    public Company(long id, String name, double giro, String[] developerNames) {
+        this.id = id;
+        this.name = name;
+        this.giro = giro;
+        checkGiro(this.giro);
+        this.developerNames = developerNames;
     }
 
     public long getId() {
@@ -35,7 +45,7 @@ public class Company {
     }
 
     public void setGiro(double giro) {
-        this.giro = giro;
+        checkGiro(giro);
     }
 
     public String[] getDeveloperNames() {
@@ -46,13 +56,6 @@ public class Company {
         this.developerNames = developerNames;
     }
 
-    public Company(long id, String name, double giro, String[] developerNames) {
-        this.id = id;
-        this.name = name;
-        this.giro = giro;
-        checkGiro(this.giro);
-        this.developerNames = developerNames;
-    }
 
     @Override
     public String toString() {
@@ -65,15 +68,15 @@ public class Company {
     }
 
     public void addEmployee(int index, String name){
-        if(index < 0 || index > developerNames.length){
-            System.out.println("Error: Invalid index");
+        try {
+            if (developerNames[index] != null) {
+                System.out.println("This index is not empty can't add developer name");
+            } else {
+                developerNames[index] = name;
+                System.out.println("Developer " + name + " added successfully");
+            }
+            }catch (ArrayIndexOutOfBoundsException ex){
+                System.out.println("Invalid index: " + ex.getMessage());
+            }
         }
-
-        if(developerNames[index] != null){
-            System.out.println("This index is not empty can't add developer name");
-        }else{
-            developerNames[index] = name;
-            System.out.println("Developer name" + name + "added successfully");
-        }
-    }
 }
